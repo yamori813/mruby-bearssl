@@ -28,6 +28,8 @@
 
 #include "bearssl.h"
 
+void mt19937ar_init();
+
 #define DONE mrb_gc_arena_restore(mrb, 0);
 
 typedef struct {
@@ -52,6 +54,8 @@ static mrb_value mrb_bearssl_init(mrb_state *mrb, mrb_value self)
   data = (mrb_bearssl_data *)mrb_malloc(mrb, sizeof(mrb_bearssl_data));
   
   DATA_PTR(self) = data;
+
+  mt19937ar_init();
 
   return self;
 }
