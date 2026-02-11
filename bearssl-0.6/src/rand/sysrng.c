@@ -139,14 +139,6 @@ seeder_win32(const br_prng_class **ctx)
 }
 #endif
 
-unsigned long genrand_int32(void);
-
-int
-seeder_mtrand(const br_prng_class **ctx)
-{
-	return genrand_int32();
-}
-
 /* see bearssl_rand.h.h */
 br_prng_seeder
 br_prng_seeder_system(const char **name)
@@ -170,10 +162,6 @@ br_prng_seeder_system(const char **name)
 	}
 	return &seeder_win32;
 #endif
-	if (name != NULL) {
-		*name = "mt";
-	}
-	return &seeder_mtrand;
 
 	if (name != NULL) {
 		*name = "none";
